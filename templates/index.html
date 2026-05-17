@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Secure Cipher Chat</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <main class="app-shell">
+        <section class="hero">
+            <p class="eyebrow">Columnar Transposition Cipher</p>
+            <h1>Secure Cipher Chat</h1>
+            <p class="hero-copy">Compose, encrypt, send, and decrypt a message with a shared secret key.</p>
+        </section>
+
+        <section class="cipher-workspace" aria-label="Cipher chat workspace">
+            <form class="panel compose-panel" id="encryptForm">
+                <div class="panel-header">
+                    <span class="step-badge">A</span>
+                    <div>
+                        <h2>Sender</h2>
+                        <p>Create the message</p>
+                    </div>
+                </div>
+
+                <label for="text">Plaintext</label>
+                <textarea id="text" placeholder="Type your message..."></textarea>
+
+                <label for="key">Secret key</label>
+                <input type="text" id="key" placeholder="Example: cipher">
+
+                <button type="submit">Encrypt & Send</button>
+            </form>
+
+            <div class="message-lane" aria-hidden="true">
+                <div id="flyingMessage"></div>
+            </div>
+
+            <section class="panel receive-panel">
+                <div class="panel-header">
+                    <span class="step-badge">B</span>
+                    <div>
+                        <h2>Receiver</h2>
+                        <p>Reveal the result</p>
+                    </div>
+                </div>
+
+                <div class="output-box encrypted-box">
+                    <h3>Encrypted Message</h3>
+                    <p id="encryptedResult">Waiting for a message...</p>
+                </div>
+
+                <div class="output-box result-box">
+                    <h3>Decrypted Message</h3>
+                    <p id="result">Nothing decrypted yet.</p>
+                </div>
+
+                <button id="decryptButton" type="button">Decrypt</button>
+            </section>
+        </section>
+
+        <p class="status-message" id="statusMessage" role="status" aria-live="polite"></p>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
